@@ -186,11 +186,18 @@ def process_image(filename):
                                     most = get_different_color()[0]
                                     unmost = get_different_color()[1]
                                 except IndexError : #IF all empty
-                                    red_html = int_rgbcode[1]
-                                    green_html = int_rgbcode[2]
-                                    blue_html = int_rgbcode[3]
-                                    most = int_rgbcode[0]
-                                    unmost = int_rgbcode[4]
+                                    try:
+                                        red_html = int_rgbcode[1]
+                                        green_html = int_rgbcode[2]
+                                        blue_html = int_rgbcode[3]
+                                        most = int_rgbcode[0]
+                                        unmost = int_rgbcode[4]
+                                    except IndexError:
+                                        red_html = int_rgbcode[0]
+                                        green_html = int_rgbcode[0]
+                                        blue_html = int_rgbcode[0]
+                                        most = int_rgbcode[0]
+                                        unmost = int_rgbcode[0]
 
     #For Testing2
     print(red[:3])

@@ -96,53 +96,69 @@ def process_image(filename):
     green = []
     blue = []
 
-    def get_blue(correction):
+    def get_blue(correction, col_index):
         for num in range(len(int_rgbcode)):
-            #10 = correction, makin besar makin jelas RGB nya
             if int_rgbcode[num][2] > int_rgbcode[num][1]+correction and int_rgbcode[num][2] > int_rgbcode[num][0]+correction:
                 blue.append(int_rgbcode[num])
-        return blue[0]
+        return blue[col_index]
 
-    def get_green(correction):
+    def get_green(correction, col_index):
         for num in range(len(int_rgbcode)):
             if int_rgbcode[num][1] > int_rgbcode[num][0]+correction and int_rgbcode[num][1] > int_rgbcode[num][2]+correction:
                 green.append(int_rgbcode[num])
-        return green[0]
+        return green[col_index]
 
-    def get_red(correction):
+    def get_red(correction, col_index):
         for num in range(len(int_rgbcode)):
             if int_rgbcode[num][0] > int_rgbcode[num][1]+correction and int_rgbcode[num][0] > int_rgbcode[num][2]+correction:
                 red.append(int_rgbcode[num])
-        return red[0]
+        return red[col_index]
 
     try :
-        red_html = get_red(50)
-        green_html = get_green(50)
-        blue_html = get_blue(50)
+        red_html = get_red(50, 0)
+        green_html = get_green(50, 0)
+        blue_html = get_blue(50, 0)
     except IndexError :
         try:
-            red_html = get_red(30)
-            green_html = get_green(30)
-            blue_html = get_blue(30)
+            red_html = get_red(30, 0)
+            green_html = get_green(30, 0)
+            blue_html = get_blue(30, 0)
         except IndexError:
             try:
-                red_html = get_red(20)
-                green_html = get_green(20)
-                blue_html = get_blue(20)
+                red_html = get_red(20, 0)
+                green_html = get_green(20, 0)
+                blue_html = get_blue(20, 0)
             except IndexError:
                 try:
-                    red_html = get_red(15)
-                    green_html = get_green(15)
-                    blue_html = get_blue(15)
+                    red_html = get_red(15, 0)
+                    green_html = get_green(15, 0)
+                    blue_html = get_blue(15, 0)
                 except IndexError:
                     try:
-                        red_html = get_red(10)
-                        green_html = get_green(10)
-                        blue_html = get_blue(10)
+                        red_html = get_red(10, 0)
+                        green_html = get_green(10, 0)
+                        blue_html = get_blue(10, 0)
                     except IndexError :
-                        red_html = int_rgbcode[1]
-                        green_html = int_rgbcode[2]
-                        blue_html = int_rgbcode[3]
+                        try:
+                            red_html = get_red(30, 0)
+                            green_html = get_red(30, 2)
+                            blue_html = get_red(30, 4)
+                        except IndexError:
+                            try :
+                                red_html = get_green(30, 2)
+                                green_html = get_green(30, 0)
+                                blue_html = get_green(30, 4)
+                            except IndexError :
+                                try :
+                                    red_html = get_blue(30, 0)
+                                    green_html = get_blue(30, 2)
+                                    blue_html = get_blue(30, 4)
+                                except IndexError :
+                                    red_html = int_rgbcode[0]
+                                    green_html = int_rgbcode[1]
+                                    blue_html = int_rgbcode[2]
+
+
 
     print(red[:3])
     print(green[:3])
@@ -196,12 +212,12 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# if __name__ == "__main__":
-#     app.run(host=os.getenv('IP', '0.0.0.0'),
-#             port=int(os.getenv('PORT', 8930)), debug=True)
+if __name__ == "__main__":
+    app.run(host=os.getenv('IP', '0.0.0.0'),
+            port=int(os.getenv('PORT', 8930)), debug=True)
 
-if __name__=="__main__":
-    app.run(host='0.0.0.0', port=5000)
+# if __name__=="__main__":
+#     app.run(host='0.0.0.0', port=5000)
 
 
 

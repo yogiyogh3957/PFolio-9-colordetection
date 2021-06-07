@@ -12,6 +12,7 @@ import math
 STOCK_ENDPOINT = "http://thecolorapi.com/id?"
 
 PEOPLE_FOLDER = os.path.join('static', 'uploads')
+# PEOPLE_FOLDER = os.environ.get('static', 'uploads')
 
 UPLOAD_FOLDER = '/Users/yogianantaputra'
 FOLDER = "/Users/yogianantaputra/PycharmProjects/PFolio-9-colordetection/static/img"

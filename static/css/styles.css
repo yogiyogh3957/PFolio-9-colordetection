@@ -1,0 +1,106 @@
+/* This CSS file will need to be added to the styling of 
+your web pages for the styles to be rendered. */
+
+body {
+background-color: #333;
+color: red;
+}
+
+a {
+    color: #ffc107;
+}
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 200px;
+  height: 100vh;
+  color: white;
+  background-color: #cc9b6d;
+
+  background-size: cover;
+}
+
+.jumbotron2 {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-bottom: 100px;
+  height: 100vh;
+  color: white;
+  background-color: #cc9b6d;
+
+  background-size: cover;
+}
+
+.space-above {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.lead {
+ font-family: 'Montserrat', sans-serif;
+ color: #c8c2bc;
+ font-weight: 900 !important;
+ font-style:italic !important;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.row {
+    align-items:
+}
+
+.navbar{
+    margin-bottom: 1px !important;
+}
+
+.col-4 {
+    margin-left : 30px
+}
+
+.col-8 {
+    margin-left : 1330px
+}
+
+#larger {
+    font-size: 20px;
+    margin-top: 60px;
+    color: #000;
+    background-color : white;
+
+}
+
+#middle {
+    font-size: 40px;
+}
+
+.img {
+    width : 10% !important;
+}
+
+.box {
+  float: left;
+  height: 20px;
+  width: 20px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  clear: both;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}

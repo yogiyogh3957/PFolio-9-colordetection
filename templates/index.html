@@ -1,0 +1,38 @@
+{% extends 'bootstrap/base.html' %}
+{% include "header.html" %}
+
+{% block styles %}
+{{super()}}
+<link href="static/css/styles.css" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,900&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+
+        <div class="container">
+          <h1 class="display-4">☕️ Another Dangerous Writing App 💻</h1>
+          <p class="lead">Don’t stop writing, or all progress will be lost.</p>
+          <hr class="my-4">
+          <p>You've found the right place! Checkout my collection of cafes with data on power socket availability, wifi speed and coffee quality.</p>
+
+            <form method=post enctype=multipart/form-data>
+                <input type=file name=file>
+                <input type=submit value=Upload>
+            </form>
+        </div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

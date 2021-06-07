@@ -115,7 +115,6 @@ def process_image(filename):
         return red[col_index]
 
 
-
     def get_different_color():
         diff_col = []
         for x, y in itertools.combinations(int_rgbcode, 2):
@@ -193,7 +192,7 @@ def process_image(filename):
                                     most = int_rgbcode[0]
                                     unmost = int_rgbcode[4]
 
-
+    #For Testing2
     print(red[:3])
     print(green[:3])
     print(blue[:3])

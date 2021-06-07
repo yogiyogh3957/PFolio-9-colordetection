@@ -141,7 +141,7 @@ def process_image(filename):
                     except IndexError :
                         try:
                             red_html = get_red(30, 0)
-                            green_html = get_red(30, 2)
+                            green_html = int_rgbcode[2]
                             blue_html = get_red(30, 4)
                         except IndexError:
                             try :

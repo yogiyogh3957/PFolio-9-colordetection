@@ -13,52 +13,62 @@
 <div class="jumbotron2 text-center">
 
         <div class="container">
-          <h1 class="display-4">☕️ Another Dangerous Writing App 💻</h1>
-          <p class="lead">Don’t stop writing, or all progress will be lost.</p>
+          <h1 class="display-4">☕️ IMAGE COLORS DETECTOR 💻</h1>
+          <p class="lead">Upload Your Image and Get Your Color.</p>
           <hr class="my-4">
-          <p>You've found the right place! Checkout my collection of cafes with data on power socket availability, wifi speed and coffee quality.</p>
-            <img src="{{url_for('static', filename=image)}}" alt="User Image" width=40%>
-
+          <p>You've found the right place!</p>
             <br>
-            {% if coloring %}
+                <div class="container">
+                  <div class="row">
 
-                    <div class="container">
-                      <div class="row">
-
-                            <div class="col-lg-3">
-                              <svg width="400" height="10">
-                                <rect width="100" height="30" style="fill:rgb{{ most }};" />
-                              </svg>
-                            </div>
-
-                            <div class="col-lg-3">
-                              <svg width="400" height="10">
-                                <rect width="100" height="30" style="fill:rgb{{ red }};" />
-                              </svg>
-                            </div>
-
-                            <div class="col-lg-3">
-                              <svg width="400" height="10">
-                                <rect width="100" height="30" style="fill:rgb{{ green }};" />
-                              </svg>
-                            </div>
-
-                            <div class="col-lg-3">
-                              <svg width="400" height="10">
-                                <rect width="100" height="30" style="fill:rgb{{ blue }};" />
-                              </svg>
-                            </div>
-
-                      </div>
+                    <div class="col-lg-8">
+                      <img class="uploaded-image" src="{{url_for('static', filename=image)}}" alt="User Image">
                     </div>
 
-            {% endif %}
-            <br>
-            <form method="post">
-                <input type="submit" value="Click Me" >
-            </form>
+
+                    <div class="col-lg-4">
+
+                        <div class="allbox">
+
+                            {% if coloring %}
+                            <div class="thebox" style="background-color:rgb{{ most }};">
+                                <p class="textbox" style="color:rgb{{ unmost }};"> {{ most }} </p>
+                            </div>
+
+                            <div class="thebox" style="background-color:rgb{{ red }};">
+                                <p class="textbox" style="color:rgb{{ most }};"> {{ red }} </p>
+                            </div>
+
+                            <div class="thebox" style="background-color:rgb{{ green }};">
+                                <p class="textbox" style="color:rgb{{ most }};"> {{ green }} </p>
+                            </div>
+
+                            <div class="thebox" style="background-color:rgb{{ blue }};">
+                                <p class="textbox" style="color:rgb{{ red }};"> {{ blue }} </p>
+                            </div>
+
+                            <div class="thebox" style="background-color:rgb{{ unmost }};">
+                                <p class="textbox" style="color:rgb{{ most }};"> {{ unmost }} </p>
+                            </div>
+
+                            {% else %}
+                            <form method="post">
+                            <button type="submit" class="btn btn-primary btn-lg">Process IMG</button>
+                            </form>
+                            {% endif %}
+                        </div>
+
+                    </div>
+
+
+                  </div>
+
+                </div>
 
         </div>
+
+
+
 
 </div>
 

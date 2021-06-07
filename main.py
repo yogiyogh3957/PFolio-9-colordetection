@@ -114,56 +114,91 @@ def process_image(filename):
                 red.append(int_rgbcode[num])
         return red[col_index]
 
+
+
+    def get_different_color():
+        diff_col = []
+        for x, y in itertools.combinations(int_rgbcode, 2):
+            (r1, g1, b1) = x
+            (r2, g2, b2) = y
+            d = math.sqrt(((r2 - r1) * (r2 - r1)) + ((g2 - g1) * (g2 - g1)) + ((b2 - b1) * (b2 - b1)))
+            p = d / math.sqrt(((255) * (255)) + ((255) * (255)) + ((255) * (255)))
+
+            # print(x, y, p)
+            if p > 0.7:
+                diff_col.append(y)
+                diff_col.append(x)
+                break
+        return diff_col
+
     try :
         red_html = get_red(50, 0)
         green_html = get_green(50, 0)
         blue_html = get_blue(50, 0)
+        most = get_different_color()[0]
+        unmost = get_different_color()[1]
     except IndexError :
         try:
             red_html = get_red(30, 0)
             green_html = get_green(30, 0)
             blue_html = get_blue(30, 0)
+            most = get_different_color()[0]
+            unmost = get_different_color()[1]
         except IndexError:
             try:
                 red_html = get_red(20, 0)
                 green_html = get_green(20, 0)
                 blue_html = get_blue(20, 0)
+                most = get_different_color()[0]
+                unmost = get_different_color()[1]
             except IndexError:
                 try:
                     red_html = get_red(15, 0)
                     green_html = get_green(15, 0)
                     blue_html = get_blue(15, 0)
+                    most = get_different_color()[0]
+                    unmost = get_different_color()[1]
                 except IndexError:
                     try:
                         red_html = get_red(10, 0)
                         green_html = get_green(10, 0)
                         blue_html = get_blue(10, 0)
+                        most = get_different_color()[0]
+                        unmost = get_different_color()[1]
                     except IndexError :
-                        try:
+                        try: #if only RED
                             red_html = get_red(30, 0)
-                            green_html = int_rgbcode[2]
-                            blue_html = get_red(30, 4)
+                            green_html = int_rgbcode[0]
+                            blue_html = int_rgbcode[1]
+                            most = get_different_color()[0]
+                            unmost = get_different_color()[1]
                         except IndexError:
-                            try :
-                                red_html = get_green(30, 2)
+                            try :  #if only GREEN
+                                red_html = int_rgbcode[0]
                                 green_html = get_green(30, 0)
-                                blue_html = get_green(30, 4)
+                                blue_html = int_rgbcode[1]
+                                most = get_different_color()[0]
+                                unmost = get_different_color()[1]
                             except IndexError :
-                                try :
-                                    red_html = get_blue(30, 0)
-                                    green_html = get_blue(30, 2)
-                                    blue_html = get_blue(30, 4)
-                                except IndexError :
+                                try : #if only BLUE
                                     red_html = int_rgbcode[0]
                                     green_html = int_rgbcode[1]
-                                    blue_html = int_rgbcode[2]
-
+                                    blue_html = get_blue(30, 4)
+                                    most = get_different_color()[0]
+                                    unmost = get_different_color()[1]
+                                except IndexError : #IF all empty
+                                    red_html = int_rgbcode[1]
+                                    green_html = int_rgbcode[2]
+                                    blue_html = int_rgbcode[3]
+                                    most = int_rgbcode[0]
+                                    unmost = int_rgbcode[4]
 
 
     print(red[:3])
     print(green[:3])
     print(blue[:3])
-    print(int_rgbcode[:3])
+    print(int_rgbcode[:6])
+    print(get_different_color())
 
 
     # #Compare each RGB, nilai maksimal 1, jika hasil perbandingan (p) makin mendekati 1 makin jauh warnanya, jika mendekati 0 mirip2
@@ -206,7 +241,7 @@ def process_image(filename):
     #
     # print(color_to_html)
 
-    return render_template("showimage.html", image=f"uploads/{filename}", coloring=True, red=red_html, green=green_html, blue=blue_html, most=int_rgbcode[0])
+    return render_template("showimage.html", image=f"uploads/{filename}", coloring=True, red=red_html, green=green_html, blue=blue_html, most=most, unmost=unmost)
 
 def allowed_file(filename):
     return '.' in filename and \

@@ -13,9 +13,9 @@ STOCK_ENDPOINT = "http://thecolorapi.com/id?"
 
 PEOPLE_FOLDER = os.path.join('static', 'uploads')
 
-UPLOAD_FOLDER = '/Users/yogianantaputra'
-FOLDER = "/Users/yogianantaputra/PycharmProjects/PFolio-9-colordetection/static/img"
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+# UPLOAD_FOLDER = '/Users/yogianantaputra'
+# FOLDER = "/Users/yogianantaputra/PycharmProjects/PFolio-9-colordetection/static/img"
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
@@ -39,7 +39,6 @@ def home():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            full_filename = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             return redirect(url_for('display_image', filename=filename))
     return render_template("index.html")
 
@@ -192,7 +191,7 @@ def process_image(filename):
                                         blue_html = int_rgbcode[3]
                                         most = int_rgbcode[0]
                                         unmost = int_rgbcode[4]
-                                    except IndexError:
+                                    except IndexError: #if 1 warna bug:by mastodi
                                         red_html = int_rgbcode[0]
                                         green_html = int_rgbcode[0]
                                         blue_html = int_rgbcode[0]
@@ -256,9 +255,6 @@ def allowed_file(filename):
 if __name__ == "__main__":
     app.run(host=os.getenv('IP', '0.0.0.0'),
             port=int(os.getenv('PORT', 8930)), debug=True)
-
-# if __name__=="__main__":
-#     app.run(host='0.0.0.0', port=5000)
 
 
 

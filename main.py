@@ -5,16 +5,12 @@ from werkzeug.utils import secure_filename
 from PIL import Image
 from collections import defaultdict
 from collections import Counter
-import requests
 import itertools
 import math
 
 STOCK_ENDPOINT = "http://thecolorapi.com/id?"
 
 PEOPLE_FOLDER = os.path.join('static', 'uploads')
-
-# UPLOAD_FOLDER = '/Users/yogianantaputra'
-# FOLDER = "/Users/yogianantaputra/PycharmProjects/PFolio-9-colordetection/static/img"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app = Flask(__name__)
